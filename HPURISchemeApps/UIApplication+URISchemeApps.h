@@ -10,8 +10,11 @@
 
 @interface UIApplication (URISchemeApps)
 
+-(NSString *) schemeWithIdentifier:(NSString *)identifier;
+
 -(BOOL) canOpenAppTweetbot;
 -(void) openTweetbot_Timeline:(NSString *)screenname;
+-(void) openTweetbot_Timeline:(NSString *)screenname WithCallBackURL:(NSString *)callBackURL;
 
 -(BOOL) canOpenAppTwitter;
 -(void) openTwitter_Timeline:(NSString *)screenname;
