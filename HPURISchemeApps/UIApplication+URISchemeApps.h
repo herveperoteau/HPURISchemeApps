@@ -19,4 +19,16 @@
 -(BOOL) canOpenAppTwitter;
 -(void) openTwitter_Timeline:(NSString *)screenname;
 
+-(BOOL) canOpenAppChromeHttp;
+-(void) openChromeHttp:(NSString *)url;
+
+-(BOOL) canOpenAppChromeHttps;
+-(void) openChromeHttps:(NSString *)url;
+
+-(BOOL) canOpenAppSafariHttp;
+-(void) openSafariHttp:(NSString *)url;
+
+-(BOOL) canOpenAppSafariHttps;
+-(void) openSafariHttps:(NSString *)url;
+
 @end

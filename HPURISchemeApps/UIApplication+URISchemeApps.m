@@ -100,5 +100,46 @@
             withValue:[NSString stringWithFormat:@"user?screen_name=%@", screenname]];
 }
 
+-(BOOL) canOpenAppChromeHttp {
+    
+    return [self canOpenAppType:SSAppURLTypeChromeHTTP];
+}
+
+-(void) openChromeHttp:(NSString *)url {
+    
+    [self openAppType:SSAppURLTypeChromeHTTP withValue:url];
+}
+
+-(BOOL) canOpenAppChromeHttps {
+    
+    return [self canOpenAppType:SSAppURLTypeChromeHTTPS];
+}
+
+-(void) openChromeHttps:(NSString *)url {
+    
+    [self openAppType:SSAppURLTypeChromeHTTPS withValue:url];
+}
+
+-(BOOL) canOpenAppSafariHttp {
+    
+    return [self canOpenAppType:SSAppURLTypeSafariHTTP];
+}
+
+-(void) openSafariHttp:(NSString *)url {
+    
+    [self openAppType:SSAppURLTypeSafariHTTP withValue:url];
+}
+
+-(BOOL) canOpenAppSafariHttps {
+
+    return [self canOpenAppType:SSAppURLTypeSafariHTTPS];
+}
+
+-(void) openSafariHttps:(NSString *)url {
+
+    [self openAppType:SSAppURLTypeSafariHTTPS withValue:url];
+}
+
+
 
 @end
