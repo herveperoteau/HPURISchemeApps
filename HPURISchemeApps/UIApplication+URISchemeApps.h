@@ -21,9 +21,11 @@
 
 -(BOOL) canOpenAppChromeHttp;
 -(void) openChromeHttp:(NSString *)url;
+-(void) openChromeHttp:(NSString *)url WithCallBackURL:(NSString *)callBackURL AndCallBackName:(NSString *)nameApp;
 
 -(BOOL) canOpenAppChromeHttps;
 -(void) openChromeHttps:(NSString *)url;
+
 
 -(BOOL) canOpenAppSafariHttp;
 -(void) openSafariHttp:(NSString *)url;

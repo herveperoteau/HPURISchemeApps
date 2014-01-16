@@ -110,6 +110,25 @@
     [self openAppType:SSAppURLTypeChromeHTTP withValue:url];
 }
 
+-(void) openChromeHttp:(NSString *)url WithCallBackURL:(NSString *)callBackURL AndCallBackName:(NSString *)nameApp {
+    
+    NSString *chromeURLString = [NSString stringWithFormat:
+                                     @"googlechrome-x-callback://x-callback-url/open/?x-source=%@&x-success=%@&url=http://%@",
+                                     [self urlEncoded:nameApp],
+                                     [self urlEncoded:callBackURL],
+                                     [self urlEncoded:url]];
+
+    NSLog(@"chromeURLString=%@", chromeURLString);
+
+    NSURL *chromeURL = [NSURL URLWithString:chromeURLString];
+
+    NSLog(@"chromeURL=%@", [chromeURL description]);
+    
+    // Open the URL with Google Chrome.
+    [[UIApplication sharedApplication] openURL:chromeURL];
+    
+}
+
 -(BOOL) canOpenAppChromeHttps {
     
     return [self canOpenAppType:SSAppURLTypeChromeHTTPS];
@@ -140,6 +159,14 @@
     [self openAppType:SSAppURLTypeSafariHTTPS withValue:url];
 }
 
+#pragma mark - private
 
+// Method to escape parameters in the URL.
+-(NSString *) urlEncoded:(NSString *)url
+{
+    CFStringRef encodedCfStringRef = CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)url,NULL,(CFStringRef)@"!*'\"();@+$,%#[]% ",kCFStringEncodingUTF8 );
+    NSString *endcodedString = (NSString *)CFBridgingRelease(encodedCfStringRef);
+    return endcodedString;
+}
 
 @end
