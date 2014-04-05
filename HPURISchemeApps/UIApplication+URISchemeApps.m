@@ -139,6 +139,24 @@
     [self openAppType:SSAppURLTypeChromeHTTPS withValue:url];
 }
 
+-(void) openChromeHttps:(NSString *)url
+        WithCallBackURL:(NSString *)callBackURL
+        AndCallBackName:(NSString *)nameApp {
+    
+    NSString *chromeURLString = [NSString stringWithFormat:
+                                 @"googlechrome-x-callback://x-callback-url/open/?x-source=%@&x-success=%@&url=https://%@",
+                                 [self urlEncoded:nameApp],
+                                 [self urlEncoded:callBackURL],
+                                 [self urlEncoded:url]];
+    
+    NSLog(@"openChromeHttps chromeURLString=%@", chromeURLString);
+    NSURL *chromeURL = [NSURL URLWithString:chromeURLString];
+    NSLog(@"openChromeHttps chromeURL=%@", [chromeURL description]);
+    
+    // Open the URL with Google Chrome.
+    [[UIApplication sharedApplication] openURL:chromeURL];
+}
+
 -(BOOL) canOpenAppSafariHttp {
     
     return [self canOpenAppType:SSAppURLTypeSafariHTTP];
